@@ -1,0 +1,84 @@
+<h2>পার্ট ৪: HTML5 API (Canvas, Storage, Geolocation, Drag & Drop, Web Workers)</h2>
+<p>
+HTML5 বিভিন্ন বিল্ট-ইন API দিয়েছে যা ওয়েব অ্যাপ্লিকেশনকে আরও শক্তিশালী করে তুলেছে। এখানে আমরা তাদের বেসিক ব্যবহার শিখব।
+</p>
+
+<h3>1. Canvas API 🎨</h3>
+<p><code>&lt;canvas&gt;</code> ট্যাগ ব্যবহার করে আপনি 2D graphics, game, animation ইত্যাদি তৈরি করতে পারেন।</p>
+<pre><code>
+&lt;canvas id=\"myCanvas\" width=\"300\" height=\"100\" style=\"border:1px solid #000\"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+  const c = document.getElementById(\"myCanvas\");
+  const ctx = c.getContext(\"2d\");
+  ctx.fillStyle = \"blue\";
+  ctx.fillRect(10, 10, 150, 75);
+&lt;/script&gt;
+</code></pre>
+
+---
+
+<h3>2. LocalStorage & SessionStorage 💾</h3>
+<p>
+LocalStorage ডেটা ব্রাউজারে স্থায়ীভাবে রাখে, আর SessionStorage রাখে শুধু ব্রাউজার ট্যাব বন্ধ হওয়া পর্যন্ত।
+</p>
+<pre><code>
+// ডেটা সেভ করা
+localStorage.setItem(\"name\", \"Samir\");
+// ডেটা রিড করা
+let name = localStorage.getItem(\"name\");
+// ডেটা রিমুভ
+localStorage.removeItem(\"name\");
+</code></pre>
+
+---
+
+<h3>3. Geolocation API 📍</h3>
+<p>এই API দিয়ে ইউজারের বর্তমান অবস্থান পাওয়া যায় (ইন্টারনেট ও পারমিশন লাগবে)।</p>
+<pre><code>
+navigator.geolocation.getCurrentPosition(function(position) {
+  alert(\"Latitude: \" + position.coords.latitude);
+});
+</code></pre>
+
+---
+
+<h3>4. Drag & Drop 🖱️</h3>
+<p>HTML5 দিয়ে সহজে এলিমেন্ট টেনে এনে অন্য জায়গায় রাখা যায়।</p>
+<pre><code>
+&lt;div id=\"drag\" draggable=\"true\" ondragstart=\"drag(event)\" style=\"width:100px;height:100px;background:red\"&gt;Drag me&lt;/div&gt;
+&lt;div id=\"drop\" ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\" style=\"width:200px;height:100px;background:#ccc\"&gt;Drop here&lt;/div&gt;
+
+&lt;script&gt;
+function allowDrop(ev) { ev.preventDefault(); }
+function drag(ev) { ev.dataTransfer.setData(\"text\", ev.target.id); }
+function drop(ev) {
+  ev.preventDefault();
+  const data = ev.dataTransfer.getData(\"text\");
+  ev.target.appendChild(document.getElementById(data));
+}
+&lt;/script&gt;
+</code></pre>
+
+---
+
+<h3>5. Web Workers ⚙️</h3>
+<p>এই API দিয়ে ব্যাকগ্রাউন্ডে স্ক্রিপ্ট রান করানো যায় যাতে UI হ্যাং না হয়।</p>
+<pre><code>
+// worker.js
+onmessage = function(e) {
+  let result = e.data * 2;
+  postMessage(result);
+}
+
+// main.html
+let worker = new Worker(\"worker.js\");
+worker.postMessage(5);
+worker.onmessage = function(e) {
+  alert(\"Result: \" + e.data);
+}
+</code></pre>
+
+---
+
+<p>👉 এবার এসব API নিয়ে খেলুন! এডিটরে কোড লিখে রান করুন।</p>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML5 শিখুন বাংলায়</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>💡 HTML5 শিখুন বাংলায় - সম্পূর্ণ কোর্স</h1>
+    <label class="switch">
+      <input type="checkbox" id="darkModeToggle" />
+      <span class="slider round"></span>
+    </label>
+
+
+    <nav>
+      <a href="#" onclick="loadContent('part1')">পার্ট ১</a>
+      <a href="#" onclick="loadContent('part2')">পার্ট ২</a>
+      <a href="#" onclick="loadContent('part3')">পার্ট ৩</a>
+      <a href="#" onclick="loadContent('part4')">পার্ট ৪</a>
+      <a href="#" onclick="loadContent('part5')">পার্ট ৫</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="tutorial" class="tutorial-section">
+      <h2>স্বাগতম!</h2>
+      <p>উপরে থেকে একটি পার্ট সিলেক্ট করুন শেখা শুরু করতে।</p>
+    </section>
+
+    <section class="editor-section">
+      <div class="editor-container">
+        <h3>HTML</h3>
+        <textarea id="html-code" placeholder="HTML কোড লিখুন..."></textarea>
+      </div>
+      <div class="editor-container">
+        <h3>CSS</h3>
+        <textarea id="css-code" placeholder="CSS কোড লিখুন..."></textarea>
+      </div>
+      <div class="editor-container">
+        <h3>JS</h3>
+        <textarea id="js-code" placeholder="JavaScript কোড লিখুন..."></textarea>
+      </div>
+    </section>
+
+    <button onclick="runCode()">▶️ রান করুন</button>
+
+    <section class="preview">
+      <iframe id="preview-frame"></iframe>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 সামির - HTML5 শেখার সম্পূর্ণ বাংলা প্ল্যাটফর্ম</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
